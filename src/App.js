@@ -1,26 +1,21 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter, Link } from "react-router-dom";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+
+const Home = () => <h1>Home</h1>;
+const News = () => <h1>News</h1>;
+const Contact = () => <h1>Contact</h1>;
 
 class App extends Component {
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <div>
           <header>
             <nav>
               <ul>
-                {/* <li>
-                  <a href="/">Start</a>
-                </li>
                 <li>
-                  <a href="/news">News</a>
-                </li>
-                <li>
-                  <a href="/contact">Contact</a>
-                </li> */}
-                <li>
-                  <Link to="/">Start</Link>
+                  <Link to="/">Home</Link>
                 </li>
                 <li>
                   <Link to="/news">News</Link>
@@ -31,9 +26,13 @@ class App extends Component {
               </ul>
             </nav>
           </header>
-          <section>Witaj</section>
+          <section>
+            <Route path="/" exact component={Home} />
+            <Route path="/news" component={News} />
+            <Route path="/contact" component={Contact} />
+          </section>
         </div>
-      </BrowserRouter>
+      </Router>
     );
   }
 }
