@@ -1,10 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import { BrowserRouter as Router, Link, NavLink, Route } from "react-router-dom";
+import { BrowserRouter as Router, Link, NavLink, Route, Switch } from "react-router-dom";
 
 const Home = () => <h1>Home</h1>;
 const News = () => <h1>News</h1>;
 const Contact = () => <h1>Contact</h1>;
+const ErrorPage = () => <h1>Strona nie istnieje</h1>;
 
 class App extends Component {
   render() {
@@ -46,9 +47,12 @@ class App extends Component {
             </nav>
           </header>
           <section>
-            <Route path="/" exact component={Home} />
-            <Route path="/news" component={News} />
-            <Route path="/contact" component={Contact} />
+            <Switch>
+              <Route path="/" exact component={Home} />
+              <Route path="/news" component={News} />
+              <Route path="/contact" component={Contact} />
+              <Route component={ErrorPage} />
+            </Switch>
           </section>
         </div>
       </Router>
